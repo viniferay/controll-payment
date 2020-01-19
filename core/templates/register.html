@@ -1,0 +1,33 @@
+{% extends 'base.html' %}
+{% load widget_tweaks %}
+{% block body %}
+<div class="container">
+    <div class="row">
+        <h3>Formulario de Cadastro</h3>
+        {% if return %}
+        <h4>{{return}}</h4>
+        {% endif %}
+        <form method="POST">
+            {% csrf_token %}
+            <div class="form-group">
+               <label for="{{form.first_name.id_for_label}}">Nome</label>
+                {{form.first_name|add_class:'form-control'|attr:'autofocus'}}
+                {{form.first_name.errors}}
+                <label for="{{form.last_name.id_for_label}}">Sobrenome</label>
+                {{form.last_name|add_class:'form-control'}}
+                {{form.last_name.errors}}
+                <label for="{{form.email.id_for_label}}">E-mail</label>
+                {{form.email|add_class:'form-control'|attr:'type:email'}}
+                {{form.email.errors}}
+                <label for="{{form.username.id_for_label}}">Nome de Usuario</label>
+                {{form.username|add_class:'form-control'}}
+                {{form.username.errors}}
+                <label for="{{form.password.id_for_label}}">Senha</label>
+                {{form.password|add_class:'form-control'|attr:'type:password'}}
+                {{form.password.errors}}
+            </div>
+            <button class="btn btn-primary"> Enviar </button>
+        </form>
+    </div>
+</div>
+{% endblock body %}
