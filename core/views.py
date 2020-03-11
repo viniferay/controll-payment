@@ -4,6 +4,8 @@ from django.shortcuts import render
 
 from core.forms import RegisterForm
 
+def home(request):
+    return render(request, 'index.html')
 
 def register(request):
     form = RegisterForm(request.POST or None)
